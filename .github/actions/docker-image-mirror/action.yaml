@@ -1,0 +1,39 @@
+name: "Docker image mirror push"
+description: 'GitHub Action to mirror a docker image to other registry'
+author: 'Calm Zhu'
+inputs:
+  source-image:
+    description: "Source image full name"
+    required: true
+  target-registry:
+    description: "Target image registry base url"
+    required: true
+  target-registry-user:
+    description: "Target image registry username"
+    required: true
+  target-registry-password:
+    required: true
+    description: "Target image registry password"
+  target-image-name:
+    description: "name of target image"
+    required: true
+  tags:
+    required: true
+    description: "versions to mirror"
+
+runs:
+  using: 'composite'
+  steps:
+    - shell: bash
+      env:
+        registry_pass: ${{ inputs.target-registry-password }}
+      run: |
+          echo $registry_pass | docker login ${{ inputs.target-registry }} -u ${{ inputs.target-registry-user }} --password-stdin
+          for tag in `echo ${{ inputs.tags }} | yq -otsv`
+          do
+              src=${{ inputs.source-image }}:$tag
+              dst=${{ inputs.target-registry }}/${{ inputs.target-image-name }}:$tag
+              docker pull $src
+              docker tag $src $dst
+              docker push $dst
+          done

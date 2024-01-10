@@ -1,0 +1,48 @@
+name: Mirror
+on:
+  workflow_dispatch:
+    inputs:
+      source:
+        description: 'Source image full name'
+        required: true
+        type: string
+      dst:
+        description: 'dst image name'
+        required: true
+        type: string
+      tags:
+        description: 'image tag list'
+        required: true
+        type: string
+  workflow_call:
+    inputs:
+      source:
+        description: 'Source image full name'
+        required: true
+        type: string
+      dst:
+        description: 'dst image name'
+        required: true
+        type: string
+      tags:
+        description: 'image tag list'
+        required: true
+        type: string
+concurrency:
+  group: mirror-${{ inputs.dst }}
+  cancel-in-progress: true
+jobs:
+  mirror:
+    runs-on: [ ubuntu-latest ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: './.github/actions/docker-image-mirror'
+        name: mirror
+        with:
+          source-image: ${{ inputs.source }}
+          target-registry: ${{ vars.ALIYUN_ECR_URL }}
+          target-registry-user: ${{ secrets.ALIYUN_ECR_USERNAME }}
+          target-registry-password: ${{ secrets.ALIYUN_ECR_AUTH }}
+          target-image-name: ${{ inputs.dst }}
+          tags: |
+            - ${{ inputs.tags }}
