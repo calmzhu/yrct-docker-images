@@ -7,3 +7,8 @@
   dst: yrct-mirror/argo-workflow-controller
   tags:
     - name: v3.5.2
+- source: yrct/br-bins
+  dst: yrct-mirror/br-bins
+  tags:
+    - name: main-build4-1257a71
+    - name: latest
