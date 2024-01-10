@@ -1,48 +1,50 @@
 name: Mirror
 on:
-  workflow_dispatch:
-    inputs:
-      source:
-        description: 'Source image full name'
-        required: true
-        type: string
-      dst:
-        description: 'dst image name'
-        required: true
-        type: string
-      tags:
-        description: 'image tag list'
-        required: true
-        type: string
-  workflow_call:
-    inputs:
-      source:
-        description: 'Source image full name'
-        required: true
-        type: string
-      dst:
-        description: 'dst image name'
-        required: true
-        type: string
-      tags:
-        description: 'image tag list'
-        required: true
-        type: string
+  push:
+    branches:
+      - main
+    paths:
+      - 'mirrors.yaml'
 concurrency:
   group: mirror-${{ inputs.dst }}
   cancel-in-progress: true
 jobs:
-  mirror:
+  build-metrix:
+    outputs:
+      images: ${{ steps.list_image.outputs.images }}
     runs-on: [ ubuntu-latest ]
     steps:
       - uses: actions/checkout@v4
+      - name: list_image
+        id: list_image
+        shell: bash
+        run: |
+          echo "images=`yq -e 'map(.source)' mirrors.yaml -o json -I 0 -M`" >> "$GITHUB_OUTPUT"
+
+  mirror:
+    runs-on: [ ubuntu-latest ]
+    needs:
+      - build-metrix
+    strategy:
+      max-parallel: 1
+      matrix:
+        image: ${{ fromJson(needs.build-metrix.outputs.images) }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: set-mirror-input
+        id: set-mirror
+        run: |
+          mirror_info=`yq '.[] | select(.source == "${{ matrix.image }}")' -o json -I 0 -M mirrors.yaml`
+          echo "source=`yq '.source' <<<$mirror_info`">>"$GITHUB_OUTPUT"
+          echo "target=`yq '.dst' <<<$mirror_info`">>"$GITHUB_OUTPUT"
+          echo "tags=`yq '.tags | map(.name)' -otsv <<<$mirror_info`">>"$GITHUB_OUTPUT"
       - uses: './.github/actions/docker-image-mirror'
         name: mirror
         with:
-          source-image: ${{ inputs.source }}
+          source-image: ${{ steps.set-mirror.outputs.source }}
           target-registry: ${{ vars.ALIYUN_ECR_URL }}
           target-registry-user: ${{ secrets.ALIYUN_ECR_USERNAME }}
           target-registry-password: ${{ secrets.ALIYUN_ECR_AUTH }}
-          target-image-name: ${{ inputs.dst }}
-          tags: |
-            - ${{ inputs.tags }}
+          target-image-name: ${{ steps.set-mirror.outputs.target }}
+          tags: ${{ steps.set-mirror.outputs.tags }}
