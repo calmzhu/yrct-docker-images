@@ -8,3 +8,7 @@ package these tools into one image
 - [pbzip2](https://launchpad.net/pbzip2)
 - [gpg](https://www.gnupg.org/)
 - [rclone](https://rclone.org/)
+
+## mirrors
+
+Sync images defines in [mirrors.yaml](./mirrors.yaml) from source repository to customer mirror repository
