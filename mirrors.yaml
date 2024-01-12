@@ -15,6 +15,7 @@
   dst: yrct-mirror/br-bins
   tags:
     - name: "main-build4-1257a71"
+    - name: "main-build5-7b44025"
     - name: "latest"
     - name: "main"
 - source: busybox
