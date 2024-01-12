@@ -7,6 +7,10 @@
   dst: yrct-mirror/argo-workflow-controller
   tags:
     - name: "v3.5.2"
+- source: quay.io/argoproj/argocli
+  dst: yrct-mirror/argocli
+  tags:
+    - name: "v3.5.2"
 - source: yrct/br-bins
   dst: yrct-mirror/br-bins
   tags:
