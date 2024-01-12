@@ -12,12 +12,12 @@
   tags:
     - name: main-build4-1257a71
     - name: latest
-- sourec: busybox
+- source: busybox
   dst: yrct-mirror/busybox
   tags:
     - name: 1.36.1
     - name: stable
-- sourec: alpine
+- source: alpine
   dst: yrct-mirror/alpine
   tags:
     - name: latest
