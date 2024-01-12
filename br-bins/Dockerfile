@@ -30,7 +30,9 @@ FROM alpine
 RUN apk add  --no-cache libgcc libstdc++ openssl gpg
 COPY --from=rclone-builder /usr/bin/rclone /usr/bin/rclone
 COPY --from=pbzip2-builder /build/pbzip2-1.1.13/pbzip2 /usr/bin/pbzip2
+ADD br-function.sh /etc/profile.d/br-function.sh
 RUN <<EOF
 ln -sf /usr/bin/pbzip2 /usr/bin/pbunzip2
 ln -sf /usr/bin/pbzcat /usr/bin/pbzcat
 EOF
+ENV ENV="/etc/profile"
