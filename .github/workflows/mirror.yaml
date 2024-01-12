@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - 'mirrors.yaml'
+  workflow_dispatch:
 concurrency:
   group: mirror-${{ inputs.dst }}
   cancel-in-progress: true
@@ -19,7 +20,22 @@ jobs:
         id: list_image
         shell: bash
         run: |
-          echo "images=`yq -e 'map(.source)' mirrors.yaml -o json -I 0 -M`" >> "$GITHUB_OUTPUT"
+          set -x
+          last_version=`git log -2 --pretty=format:"%h" mirrors.yaml | tail -n 1`
+          for image in `yq '.[].source' mirrors.yaml`
+          do
+            current_mirror_info_digest=`yq ".[] | select(.source == \"$image\")" -o json -I 0 -M mirrors.yaml | sha256sum | awk '{print $1}'`
+            last_mirror_info_digest=`git show $last_version:mirrors.yaml | yq ".[] | select(.source == \"$image\")" -o json -I 0 -M  | sha256sum | awk '{print $1}'`
+            [[ "$last_mirror_info_digest" == "$current_mirror_info_digest" ]] || echo "- $image" >> change_image_manifest
+          done
+          if [[ -f change_image_manifest ]];then
+            # Sync latest edited image in mirrors.yaml
+            images=`yq -o json -I 0 -M change_image_manifest`
+          else
+            # Sync all image if no changed defined
+            images=`yq -e 'map(.source)' mirrors.yaml -o json -I 0 -M`
+          fi
+          echo "images=$images" >> "$GITHUB_OUTPUT"
 
   mirror:
     runs-on: [ ubuntu-latest ]
@@ -36,9 +52,7 @@ jobs:
         id: set-mirror
         run: |
           mirror_info=`yq '.[] | select(.source == "${{ matrix.image }}")' -o json -I 0 -M mirrors.yaml`
-          echo "source=`yq '.source' <<<$mirror_info`">>"$GITHUB_OUTPUT"
-          echo "target=`yq '.dst' <<<$mirror_info`">>"$GITHUB_OUTPUT"
-          echo "tags=`yq '.tags | map(.name)' -otsv <<<$mirror_info`">>"$GITHUB_OUTPUT"
+
       - uses: './.github/actions/docker-image-mirror'
         name: mirror
         with:

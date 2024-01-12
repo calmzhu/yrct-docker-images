@@ -27,6 +27,7 @@
   tags:
     - name: "latest"
     - name: "3.19"
+    - name: "3"
 - source: vaultwarden/server
   dst: yrct-mirror/vault-warden-server
   tags:
