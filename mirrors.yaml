@@ -22,3 +22,7 @@
   tags:
     - name: latest
     - name: 3.19
+- source: vaultwarden/server
+  dst: vaultwarden-server
+  tags:
+    - name: 1.30.1
