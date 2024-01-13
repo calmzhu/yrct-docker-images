@@ -54,6 +54,9 @@ jobs:
         id: set-mirror
         run: |
           mirror_info=`yq '.[] | select(.source == "${{ matrix.image }}")' -o json -I 0 -M mirrors.yaml`
+          echo "source=`yq '.source' <<<$mirror_info`">>"$GITHUB_OUTPUT"
+          echo "target=`yq '.dst' <<<$mirror_info`">>"$GITHUB_OUTPUT"
+          echo "tags=`yq '.tags | map(.name)' <<<$mirror_info`">>"$GITHUB_OUTPUT"
 
       - uses: './.github/actions/docker-image-mirror'
         name: mirror
