@@ -1,7 +1,6 @@
 #!/bin/sh
 
-export salt_length=${OPENSSL_SALT_LEN:-16}
-export digest=${OPENSSL_DIGEST:-"sha256"}
+export OPENSSL_DIGEST=${OPENSSL_DIGEST:="sha256"}
 
 function error(){
     echo -e "\033[31m$1\033[0m"
@@ -22,10 +21,10 @@ function warn(){
 
 
 function br_encrypt(){
-  openssl enc -e -pbkdf2  -saltlen $salt_length  -pass env:Password -aes-256-cbc -md $digest
+  openssl enc -e -pbkdf2 -pass env:Password -aes-256-cbc -md $OPENSSL_DIGEST
 }
 function br_decrypt(){
-  openssl enc -d -pbkdf2  -saltlen $salt_length -pass env:Password -aes-256-cbc -md $digest
+  openssl enc -d -pbkdf2 -pass env:Password -aes-256-cbc -md $OPENSSL_DIGEST
 }
 
 function backup_dir_to_rclone_remote () {
