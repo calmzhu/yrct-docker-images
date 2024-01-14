@@ -27,7 +27,8 @@ FROM builder as rclone-builder
 RUN curl -s https://rclone.org/install.sh | bash
 
 FROM alpine
-RUN apk add  --no-cache libgcc libstdc++ openssl gpg
+RUN apk add  --no-cache libgcc libstdc++ openssl gpg tzdata
+
 COPY --from=rclone-builder /usr/bin/rclone /usr/bin/rclone
 COPY --from=pbzip2-builder /build/pbzip2-1.1.13/pbzip2 /usr/bin/pbzip2
 ADD br-function.sh /etc/profile.d/br-function.sh
