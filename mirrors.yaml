@@ -11,12 +11,9 @@
   dst: yrct-mirror/argocli
   tags:
     - name: "v3.5.2"
-- source: yrct/br-bins
-  dst: yrct-mirror/br-bins
+- source: yrct/br
+  dst: yrct-mirror/br
   tags:
-    - name: "main-build6-47b0151"
-    - name: "main-build4-1257a71"
-    - name: "main-build5-7b44025"
     - name: "latest"
     - name: "main"
 - source: busybox
