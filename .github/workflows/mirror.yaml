@@ -44,7 +44,7 @@ jobs:
               images=`yq -e 'map(.source)' mirrors.yaml -o json -I 0 -M`
             fi
           else
-              $images='["${{ inputs.source }}"]'
+              images='["${{ inputs.source }}"]'
           fi
           echo "images=$images" >> "$GITHUB_OUTPUT"
 
