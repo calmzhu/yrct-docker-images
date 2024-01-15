@@ -1,0 +1,62 @@
+name: Build Proxy Image
+
+on:
+  workflow_dispatch:
+    inputs:
+      VERSION:
+        default: "14.1"
+        description: "Version of proxy"
+        required: true
+      PLATFORM:
+        default: "linux-amd64"
+        description: "executable platform"
+        required: true
+concurrency:
+  group: build-proxy-${{ github.ref }}
+  cancel-in-progress: true
+env:
+  DOCKER_USER: "yrct"
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_HUB_AUTH }}
+  DOCKER_IMAGE: "yrct/proxy"
+  DOCKERFILE: "Dockerfile"
+jobs:
+  build:
+    runs-on: [ ubuntu-latest ]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Login to registory
+        uses: docker/login-action@v3
+        with:
+          username: ${{ env.DOCKER_USER }}
+          password: ${{ env.DOCKER_PASSWORD }}
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+        with:
+          image: tonistiigi/binfmt:latest
+          platforms: linux/amd64
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          driver: docker
+          platforms: linux/amd64
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: | # https://semver.org/
+            ${{ env.DOCKER_IMAGE }}
+          tags: | # https://momentjs.com/docs/#/displaying/format/
+            type=raw,value=latest
+            type=raw,value=${{ inputs.VERSION }}
+          labels: | # https://github.com/opencontainers/image-spec/blob/master/annotations.md
+            org.opencontainers.image.vendor=${{ github.repository_owner }}
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          context: ./proxy
+          build-args: |
+            VERSION=${{ inputs.VERSION }}
+            PLATFORM=${{ inputs.PLATFORM }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
