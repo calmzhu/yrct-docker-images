@@ -1,20 +1,19 @@
-name: Build BR Image
+name: Build EasyRsa Image
 
 on:
-  push:
-    branches:
-      - main
-      - dev-*
-    paths:
-      - 'br/**'
   workflow_dispatch:
+    inputs:
+      EASY_RSA_VERSION:
+        default: "3.1.7"
+        description: "Easy rsa version"
+        required: true
 concurrency:
-  group: build-br-${{ github.ref }}
+  group: build-easy-rsa-${{ github.ref }}
   cancel-in-progress: true
 env:
   DOCKER_USER: "yrct"
   DOCKER_PASSWORD: ${{ secrets.DOCKER_HUB_AUTH }}
-  DOCKER_IMAGE: "yrct/br"
+  DOCKER_IMAGE: "yrct/easy-rsa"
   DOCKERFILE: "Dockerfile"
 jobs:
   build:
@@ -43,16 +42,14 @@ jobs:
           images: | # https://semver.org/
             ${{ env.DOCKER_IMAGE }}
           tags: | # https://momentjs.com/docs/#/displaying/format/
-            type=ref,enable=true,suffix=-build${{ github.run_number }}-{{sha}},event=branch
-            type=ref,prefix=pr-,suffix=-{{sha}},event=pr
-            type=ref,event=branch
             type=raw,value=latest
+            type=raw,value=${{ inputs.EASY_RSA_VERSION }}
           labels: | # https://github.com/opencontainers/image-spec/blob/master/annotations.md
             org.opencontainers.image.vendor=${{ github.repository_owner }}
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           push: true
-          context: ./br
+          context: ./easy-rsa
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
