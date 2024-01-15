@@ -27,7 +27,7 @@ jobs:
         shell: bash
         run: |
           set -x
-          if [[ -z ${{ inputs.source }} ]]
+          if [[ -z "${{ inputs.source }}" ]]
           then
             last_version=`git log -2 --pretty=format:"%h" mirrors.yaml | tail -n 1`
             for image in `yq '.[].source' mirrors.yaml`

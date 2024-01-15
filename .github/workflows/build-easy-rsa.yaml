@@ -51,5 +51,6 @@ jobs:
         with:
           push: true
           context: ./easy-rsa
+          build-args: EASY_RSA_VERSION=${{ inputs.EASY_RSA_VERSION }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

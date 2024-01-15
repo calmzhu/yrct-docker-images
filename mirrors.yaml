@@ -35,3 +35,8 @@
   dst: yrct-mirror/certbot
   tags:
     - name: "v2.8.0"
+- source: yrct/easy-rsa
+  dst: yrct-mirror/easy-rsa
+  tags:
+    - name: "3.1.7"
+    - name: "latest"
