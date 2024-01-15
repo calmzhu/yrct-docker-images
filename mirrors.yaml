@@ -40,3 +40,11 @@
   tags:
     - name: "3.1.7"
     - name: "latest"
+- source: postgres
+  dst: yrct-mirror/postgres
+  tags:
+    - name: alpine
+- source: redis
+  dst: yrct-mirror/redis
+  tags:
+    - name: latest
