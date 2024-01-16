@@ -48,3 +48,7 @@
   dst: yrct-mirror/redis
   tags:
     - name: latest
+- source: gitea/gitea
+  dst: yrct-mirror/gitea
+  tags:
+    - name: "1.21.3-rootless"
