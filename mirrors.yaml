@@ -48,11 +48,7 @@
   dst: yrct-mirror/redis
   tags:
     - name: latest
-- source: gitea/gitea
-  dst: yrct-mirror/gitea
+- source: yrct/debugger
+  dst: yrct-mirror/debugger
   tags:
-    - name: "1.21.3-rootless"
-- source: bitnami/postgresql
-  dst: yrct-mirror/postgresql
-  tags:
-    - name: 16.1.0-debian-11-r15
+    - name: latest
