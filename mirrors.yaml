@@ -52,3 +52,7 @@
   dst: yrct-mirror/debugger
   tags:
     - name: latest
+- source: ghcr.io/pichi-router/pichi
+  dst: yrct-mirror/pichi
+  tags:
+    - name: latest
