@@ -8,12 +8,12 @@ on:
       image:
         description: "image name to tag"
         required: true
-  push:
-    branch: debug
 concurrency:
   group: dockerfile-build-${{ inputs.subpath }}
   cancel-in-progress: true
 jobs:
+  jobs:
+    build-metrix:
   build-dockerfile:
     runs-on: [ ubuntu-latest ]
     steps:
@@ -21,7 +21,7 @@ jobs:
       - uses: './.github/actions/dockerfile-ci'
         name: ci
         with:
-          subpath: "nas/webdav"
+          subpath: ${{ inputs.subpath }}
           registry-user: yrct
           registry-password: ${{ secrets.DOCKER_HUB_AUTH }}
-          image-name: yrct/webdav
+          image-name: ${{ inputs.image }}
