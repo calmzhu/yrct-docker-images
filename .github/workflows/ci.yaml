@@ -1,0 +1,27 @@
+name: simple dockerfile build
+on:
+  workflow_dispatch:
+    inputs:
+      subpath:
+        description: "subpath of dockerfile"
+        required: true
+      image:
+        description: "image name to tag"
+        required: true
+concurrency:
+  group: dockerfile-build-${{ inputs.subpath }}
+  cancel-in-progress: true
+jobs:
+  jobs:
+    build-metrix:
+  build-dockerfile:
+    runs-on: [ ubuntu-latest ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: './.github/actions/dockerfile-ci'
+        name: ci
+        with:
+          subpath: ${{ inputs.subpath }}
+          registry-user: yrct
+          registry-password: ${{ secrets.DOCKER_HUB_AUTH }}
+          image-name: ${{ inputs.image }}
