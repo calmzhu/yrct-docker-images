@@ -1,4 +1,4 @@
-name: Mirror
+name: simple dockerfile build
 on:
   workflow_dispatch:
     inputs:
