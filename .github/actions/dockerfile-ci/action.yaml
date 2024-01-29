@@ -2,7 +2,7 @@ name: "dockerfile ci"
 description: 'build image from dockerfile'
 author: 'Calm Zhu'
 inputs:
-  context:
+  subpath:
     description: "Source image full name"
     required: true
     default: '.'
@@ -52,12 +52,12 @@ runs:
             type=raw,value=latest
         labels: | # https://github.com/opencontainers/image-spec/blob/master/annotations.md
             org.opencontainers.image.vendor=${{ github.repository_owner }}
-            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}/${{ inputs.subpath }}
     - name: Build and push
       uses: docker/build-push-action@v5
       with:
         push: true
-        context: ${{ inputs.context }}
+        context: ${{ inputs.subpath }}
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
 
