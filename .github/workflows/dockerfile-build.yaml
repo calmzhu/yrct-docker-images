@@ -8,6 +8,8 @@ on:
       image:
         description: "image name to tag"
         required: true
+  push:
+    branch: debug
 concurrency:
   group: dockerfile-build-${{ inputs.subpath }}
   cancel-in-progress: true
