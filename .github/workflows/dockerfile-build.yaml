@@ -21,7 +21,7 @@ jobs:
       - uses: './.github/actions/dockerfile-ci'
         name: ci
         with:
-          context: ${{ inputs.subpath }}
+          context: "nas/webdav"
           registry-user: yrct
           registry-password: ${{ secrets.DOCKER_HUB_AUTH }}
-          image-name: ${{ inputs.image }}
+          image-name: yrct/webdav
