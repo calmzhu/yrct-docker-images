@@ -1,4 +1,4 @@
-name: simple dockerfile build
+name: Build dockerfile
 on:
   workflow_dispatch:
     inputs:
@@ -12,8 +12,6 @@ concurrency:
   group: dockerfile-build-${{ inputs.subpath }}
   cancel-in-progress: true
 jobs:
-  jobs:
-    build-metrix:
   build-dockerfile:
     runs-on: [ ubuntu-latest ]
     steps:
@@ -24,4 +22,4 @@ jobs:
           subpath: ${{ inputs.subpath }}
           registry-user: yrct
           registry-password: ${{ secrets.DOCKER_HUB_AUTH }}
-          image-name: ${{ inputs.image }}
+          image-name: yrct/${{ inputs.image }}
