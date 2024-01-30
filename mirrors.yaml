@@ -56,3 +56,19 @@
   dst: yrct-mirror/pichi
   tags:
     - name: latest
+- source: yrct/yt-dlp-webui
+  dst: yrct-mirror/yt-dlp-webui
+  tags:
+    - name: latest
+- source: yrct/aria2
+  dst: yrct-mirror/aria2
+  tags:
+    - name: latest
+- source: yrct/aria2-web
+  dst: yrct-mirror/aria2-web
+  tags:
+    - name: latest
+- source: yrct/webdav
+  dst: yrct-mirror/webdav
+  tags:
+    - name: latest
