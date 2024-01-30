@@ -6,8 +6,8 @@ on:
         description: "subpath of dockerfile"
         required: true
       image:
-        description: "image name to tag"
-        required: true
+        description: "image name,use subpath if empty"
+        required: false
 concurrency:
   group: dockerfile-build-${{ inputs.subpath }}
   cancel-in-progress: true
@@ -22,4 +22,4 @@ jobs:
           subpath: ${{ inputs.subpath }}
           registry-user: yrct
           registry-password: ${{ secrets.DOCKER_HUB_AUTH }}
-          image-name: yrct/${{ inputs.image }}
+          image-name: yrct/${{ inputs.image || inputs.subpath }}
