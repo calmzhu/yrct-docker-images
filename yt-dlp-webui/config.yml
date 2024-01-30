@@ -1,0 +1,5 @@
+downloadPath: /mnt/download
+require_auth: true
+username: REPLACE_WITH_USERNAME
+password: REPLACE_WITH_PASSWORD
+queue_size: 4
