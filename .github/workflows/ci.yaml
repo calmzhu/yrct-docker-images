@@ -8,6 +8,9 @@ on:
       image:
         description: "image name,use subpath if empty"
         required: false
+      tag:
+        description: "additional tag name for image"
+        required: false
 concurrency:
   group: dockerfile-build-${{ inputs.subpath }}
   cancel-in-progress: true
@@ -23,3 +26,4 @@ jobs:
           registry-user: yrct
           registry-password: ${{ secrets.DOCKER_HUB_AUTH }}
           image-name: yrct/${{ inputs.image || inputs.subpath }}
+          tag: ${{ inputs.tag }}

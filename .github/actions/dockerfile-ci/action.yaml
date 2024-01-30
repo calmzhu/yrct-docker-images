@@ -19,6 +19,9 @@ inputs:
   image-name:
     description: "name of target image"
     required: true
+  tag:
+    description: "additional tag name"
+    required: false
 runs:
   using: 'composite'
   steps:
@@ -50,6 +53,7 @@ runs:
             type=ref,prefix=pr-,suffix=-{{sha}},event=pr
             type=ref,event=branch
             type=raw,value=latest
+            type=raw,value=${{ inputs.tag }},enable=${{ inputs.tag && true || false }}
         labels: | # https://github.com/opencontainers/image-spec/blob/master/annotations.md
             org.opencontainers.image.vendor=${{ github.repository_owner }}
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}/${{ inputs.subpath }}
