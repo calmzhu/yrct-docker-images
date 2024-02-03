@@ -4,16 +4,13 @@ support alibaba cloud DNS and CloudFlare DNS.
 
 ## Usage
 
-AliCloud DNS
+### AliCloud DNS
 ```shell
 
 export EMAIL_ACCOUNT="foo@bar.com" # Your real email accounts.Email notifications about certificates will be send to this address
 export Auth_Domain="*.yourdomain.com" # what domain this certificate is for.Support both single domain or wildcard domain
 acme_server="https://acme-v02.api.letsencrypt.org/directory" # let's encrypt server address.
 # acme_server="https://acme-staging-v02.api.letsencrypt.org/directory" #for testing purpose. please use stage server of let's encrypt. To avoid frequency limit
-
-
-## if your domain dns is in alicloud
 export AliCloud_ACCESS_KEY_ID='ADD*****' # AliCloud Access key id,Must have permission to read/right dns records.
 export AliCloud_ACCESS_KEY_SECRET="XXXX*****" # AliCloud Access key secret
 docker run -it --rm --name certbot \
@@ -32,11 +29,15 @@ docker run -it --rm --name certbot \
 	-n \
 	--agree-tos \
 	-d "$Auth_Domain"
+```
 
-## if your domain dns is in Cloud Flare
 
+### Cloud Flare DNS
+```shell
+export EMAIL_ACCOUNT="foo@bar.com" # Your real email accounts.Email notifications about certificates will be send to this address
+export Auth_Domain="*.yourdomain.com" # what domain this certificate is for.Support both single domain or wildcard domain
+acme_server="https://acme-v02.api.letsencrypt.org/directory" # let's encrypt server address.
 export CLOUDFLARE_TOKEN=XXXXXX # your bearer token from cloudflare.Must have permission to read/right dns records.
-
 docker run -it --rm --name certbot \
     -e CLOUDFLARE_TOKEN \
     -e Auth_Domain \
