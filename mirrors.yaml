@@ -76,3 +76,7 @@
   dst: yrct-mirror/smartdns
   tags:
     - name: latest
+- source: yrct/openvpn
+  dst: yrct-mirror/openvpn
+  tags:
+    - name: latest
