@@ -80,3 +80,8 @@
   dst: yrct-mirror/openvpn
   tags:
     - name: latest
+- source: jellyfin/jellyfin
+  dst: yrct-mirror/jellyfin
+  tags:
+    - name: latest
+
