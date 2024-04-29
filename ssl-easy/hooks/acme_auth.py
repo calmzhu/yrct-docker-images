@@ -107,8 +107,8 @@ class AcmeDNSAuth:
         self.provider.ensure_auth_record_exists(
             fqdn=self.fqdn, value=self.rr_data, rr_type=self.rr_type
         )
-        # give 3s for change to take effect
-        time.sleep(3)
+        # give 30s for change to take effect
+        time.sleep(30)
 
     def clean(self):
         self.provider.delete_auth_record(
