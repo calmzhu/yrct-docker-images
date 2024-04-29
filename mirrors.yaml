@@ -84,4 +84,8 @@
   dst: yrct-mirror/jellyfin
   tags:
     - name: latest
+- source: yrct/ssl-easy
+  dst: yrct-mirror/ssl-easy
+  tags:
+    - name: latest
 
