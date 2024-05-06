@@ -96,3 +96,7 @@
   dst: yrct-mirror/bitnami-redis
   tags:
     - name: 7.2.4-debian-11-r5
+- source: hashicorp/vault
+  dst: yrct-mirror/hashicorp-vault
+  tags:
+    - name: 1.16.1
