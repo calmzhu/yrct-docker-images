@@ -88,4 +88,11 @@
   dst: yrct-mirror/ssl-easy
   tags:
     - name: latest
-
+- source: bitnami/postgresql
+  dst: yrct-mirror/bitnami-postgresql
+  tags:
+    - name: 16.2.0-debian-11-r17
+- source: bitnami/redis
+  dst: yrct-mirror/bitnami-redis
+  tags:
+    - name: 7.2.4-debian-11-r5
