@@ -44,6 +44,7 @@
   dst: yrct-mirror/postgres
   tags:
     - name: alpine
+    - name: "10"
 - source: redis
   dst: yrct-mirror/redis
   tags:
