@@ -101,3 +101,7 @@
   dst: yrct-mirror/hashicorp-vault
   tags:
     - name: 1.16.1
+- source: drakkan/sftpgo
+  dst: yrct-mirror/sftpgp
+  tags:
+    - name: latest
