@@ -101,6 +101,11 @@
   dst: yrct-mirror/hashicorp-vault
   tags:
     - name: 1.16.1
+    - name: 1.17.2
+- source: hashicorp/vault-k8s
+  dst: yrct-mirror/hashicorp-vault-k8s
+  tags:
+    - name: 1.4.2
 - source: drakkan/sftpgo
   dst: yrct-mirror/sftpgp
   tags:
