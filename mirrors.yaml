@@ -45,6 +45,7 @@
   tags:
     - name: alpine
     - name: "10"
+    - name: "16"
 - source: redis
   dst: yrct-mirror/redis
   tags:
@@ -110,3 +111,9 @@
   dst: yrct-mirror/sftpgp
   tags:
     - name: latest
+- source: nocobase/nocobase
+  dst: yrct-mirror/nocobase
+  tags:
+    - name: latest
+    - name: 1.2.34-alpha
+- source: 
