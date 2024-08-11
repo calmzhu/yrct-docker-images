@@ -120,3 +120,60 @@
   dst: greenbone-mirror/vulnerability-tests
   tags:
     - name: latest
+- source: greenbone/notus-data
+  dst: greenbone-mirror/notus-data
+  tags:
+    - name: latest
+- source: greenbone/scap-data
+  dst: greenbone-mirror/scap-data
+  tags:
+    - name: latest
+- source: greenbone/cert-bund-data
+  dst: greenbone-mirror/cert-bund-data
+  tags:
+    - name: latest
+- source: greenbone/dfn-cert-data
+  dst: greenbone-mirror/dfn-cert-data
+  tags:
+    - name: latest
+- source: greenbone/data-objects
+  dst: greenbone-mirror/data-objects
+  tags:
+    - name: latest
+- source: greenbone/report-formats
+  dst: greenbone-mirror/report-formats
+  tags:
+    - name: latest
+- source: greenbone/gpg-data
+  dst: greenbone-mirror/gpg-data
+  tags:
+    - name: latest
+- source: greenbone/redis-server
+  dst: greenbone-mirror/redis-server
+  tags:
+    - name: latest
+- source: greenbone/pg-gvm
+  dst: greenbone-mirror/pg-gvm
+  tags:
+    - name: stable
+- source: greenbone/gvmd
+  dst: greenbone-mirror/gvmd
+  tags:
+    - name: stable
+- source: greenbone/gsa
+  dst: greenbone-mirror/gsa
+  tags:
+    - name: stable
+- source: greenbone/openvas-scanner
+  dst: greenbone-mirror/openvas-scanner
+  tags:
+    - name: stable
+- source: greenbone/ospd-openvas
+  dst: greenbone-mirror/ospd-openvas
+  tags:
+    - name: stable
+- source: greenbone/gvm-tools
+  dst: greenbone-mirror/gvm-tools
+  tags:
+    - name: latest
+       
