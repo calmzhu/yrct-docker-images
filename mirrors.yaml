@@ -116,4 +116,7 @@
   tags:
     - name: latest
     - name: 1.2.34-alpha
-- source: 
+- source: greenbone/vulnerability-tests
+  dst: greenbone-mirror/vulnerability-tests
+  tags:
+    - name: latest
