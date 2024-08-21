@@ -16,6 +16,10 @@
   tags:
     - name: "latest"
     - name: "main"
+- source: yrct/proxy
+  dst: yrct-mirror/proxy
+  tags:
+    - name: "latest"
 - source: busybox
   dst: yrct-mirror/busybox
   tags:
