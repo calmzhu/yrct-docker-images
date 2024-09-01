@@ -181,7 +181,7 @@
   dst: greenbone-mirror/gvm-tools
   tags:
     - name: latest
-- source: nginx/nginx
+- source: nginx
   dst: yrct-mirror/nginx
   tags:
     - name: latest
