@@ -1,3 +1,4 @@
+# registry.cn-shanghai.aliyuncs.com/yrct-mirror
 - source: jenkins/jenkins
   dst: yrct-mirror/jenkins
   tags:
@@ -180,4 +181,11 @@
   dst: greenbone-mirror/gvm-tools
   tags:
     - name: latest
+- source: nginx/nginx
+  dst: yrct-mirror/nginx
+  tags:
+    - name: latest
+    - name: alpine
+    - name: 1.19-alpine
+       
        
