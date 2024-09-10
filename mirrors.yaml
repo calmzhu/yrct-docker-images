@@ -187,5 +187,9 @@
     - name: latest
     - name: alpine
     - name: 1.19-alpine
-       
+- source: mailserver/docker-mailserver
+  dst: yrct-mirror/docker-mailserver
+  tags:
+    - name: latest
+    - name: 14.0.0
        
