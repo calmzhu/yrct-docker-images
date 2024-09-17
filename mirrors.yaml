@@ -226,4 +226,4 @@
   dst: yrct-mirror/mailu-fetchmail
   tags:
      - name: 2024.06
-     - name: latest
+     - name: 2024.07
