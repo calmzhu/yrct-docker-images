@@ -54,6 +54,7 @@ jobs:
       - build-metrix
     strategy:
       max-parallel: 3
+      fail-fast: false
       matrix:
         image: ${{ fromJson(needs.build-metrix.outputs.images) }}
 
