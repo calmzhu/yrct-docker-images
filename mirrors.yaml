@@ -192,4 +192,35 @@
   tags:
     - name: latest
     - name: 14.0.0
-       
+- source: ghcr.io/mailu/nginx
+  dst: yrct-mirror/mailu-nginx
+  tags:
+    - name: 2024.06
+- source: ghcr.io/mailu/unbound
+  dst: yrct-mirror/mailu-unbound
+  tags:
+     - name: 2024.06
+- source: ghcr.io/mailu/admin
+  dst: yrct-mirror/mailu-admin
+  tags:
+     - name: 2024.06
+- source: ghcr.io/mailu/dovecot
+  dst: yrct-mirror/mailu-dovecot
+  tags:
+     - name: 2024.06
+- source: ghcr.io/mailu/postfix
+  dst: yrct-mirror/mailu-postfix
+  tags:
+     - name: 2024.06
+- source: ghcr.io/mailu/oletools
+  dst: yrct-mirror/mailu-oletools
+  tags:
+     - name: 2024.06
+- source: ghcr.io/mailu/rspamd
+  dst: yrct-mirror/mailu-rspamd
+  tags:
+     - name: 2024.06
+- source: ghcr.io/mailu/fetchmail
+  dst: yrct-mirror/mailu-fetchmail
+  tags:
+     - name: 2024.06
