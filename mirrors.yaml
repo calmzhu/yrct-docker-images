@@ -51,10 +51,12 @@
     - name: alpine
     - name: "10"
     - name: "16"
+    - name: "18"
 - source: redis
   dst: yrct-mirror/redis
   tags:
     - name: latest
+    - name: alpine
 - source: yrct/debugger
   dst: yrct-mirror/debugger
   tags:
@@ -224,3 +226,4 @@
   dst: yrct-mirror/mailu-fetchmail
   tags:
      - name: 2024.06
+     - name: latest
