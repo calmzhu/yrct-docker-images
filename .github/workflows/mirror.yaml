@@ -67,7 +67,8 @@ jobs:
           echo "source=`yq '.source' <<<$mirror_info`">>"$GITHUB_OUTPUT"
           echo "target=`yq '.dst' <<<$mirror_info`">>"$GITHUB_OUTPUT"
           echo "tags=`yq '.tags | map(.name)' -o tsv <<<$mirror_info`">>"$GITHUB_OUTPUT"
-
+      - name: install regctl
+        uses: regclient/actions/regctl-installer@main
       - uses: './.github/actions/docker-image-mirror'
         name: mirror
         with:
