@@ -24,8 +24,8 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Login to Registry
-      uses: docker/login-action@v3
+    - name: regctl login
+      uses: regclient/actions/regctl-login@main
       with:
         registry: ${{ inputs.target-registry }}
         username: ${{ inputs.target-registry-user }}
@@ -36,7 +36,5 @@ runs:
           do
               src=${{ inputs.source-image }}:$tag
               dst=${{ inputs.target-registry }}/${{ inputs.target-image-name }}:$tag
-              docker pull $src
-              docker tag $src $dst
-              docker push $dst
+              regctl image copy $src $dst
           done
