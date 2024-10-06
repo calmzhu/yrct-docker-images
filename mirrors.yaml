@@ -230,7 +230,7 @@
   dst: yrct-mirror/mailu-webmail
   tags:
      - name: 2024.06
- - source: mongo
+- source: mongo
   dst: yrct-mirror/mongo
   tags:
      - name: latest
