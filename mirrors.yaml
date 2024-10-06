@@ -51,7 +51,7 @@
     - name: alpine
     - name: "10"
     - name: "16"
-    - name: "18"
+    - name: latest
 - source: redis
   dst: yrct-mirror/redis
   tags:
@@ -153,34 +153,6 @@
     - name: latest
 - source: greenbone/gpg-data
   dst: greenbone-mirror/gpg-data
-  tags:
-    - name: latest
-- source: greenbone/redis-server
-  dst: greenbone-mirror/redis-server
-  tags:
-    - name: latest
-- source: greenbone/pg-gvm
-  dst: greenbone-mirror/pg-gvm
-  tags:
-    - name: stable
-- source: greenbone/gvmd
-  dst: greenbone-mirror/gvmd
-  tags:
-    - name: stable
-- source: greenbone/gsa
-  dst: greenbone-mirror/gsa
-  tags:
-    - name: stable
-- source: greenbone/openvas-scanner
-  dst: greenbone-mirror/openvas-scanner
-  tags:
-    - name: stable
-- source: greenbone/ospd-openvas
-  dst: greenbone-mirror/ospd-openvas
-  tags:
-    - name: stable
-- source: greenbone/gvm-tools
-  dst: greenbone-mirror/gvm-tools
   tags:
     - name: latest
 - source: nginx
