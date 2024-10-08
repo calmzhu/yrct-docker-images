@@ -206,3 +206,23 @@
   dst: yrct-mirror/mongo
   tags:
      - name: latest
+- source: grafana/loki
+  dst: yrct-mirror/loki
+  tags:
+     - name: 3.1.0
+- source: grafana/alloy
+  dst: yrct-mirror/alloy
+  tags:
+     - name: latest
+- source: grafana/grafana
+  dst: yrct-mirror/grafana
+  tags:
+     - name: latest
+- source: minio/minio
+  dst: yrct-mirror/minio
+  tags:
+     - name: latest
+- source: mingrammer/flog
+  dst: yrct-mirror/flog
+  tags:
+     - name: latest
