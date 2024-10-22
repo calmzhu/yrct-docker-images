@@ -226,3 +226,7 @@
   dst: yrct-mirror/flog
   tags:
      - name: latest
+- source: ghcr.io/home-assistant/home-assistant
+  dst: yrct-mirror/home-assistant
+  tags:
+     - name: stable
