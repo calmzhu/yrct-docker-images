@@ -230,3 +230,7 @@
   dst: yrct-mirror/home-assistant
   tags:
      - name: stable
+- source: pacovk/tapir
+  dst: yrct-mirror/tapir
+  tags:
+  - name: latest
