@@ -4,6 +4,7 @@
   tags:
     - name: "lts-alpine-jdk21"
     - name: "2.439-alpine-jdk21"
+    - name: "lts"
 - source: quay.io/argoproj/workflow-controller
   dst: yrct-mirror/argo-workflow-controller
   tags:
