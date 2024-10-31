@@ -231,6 +231,10 @@
   dst: yrct-mirror/home-assistant
   tags:
      - name: stable
+- source: ubuntu
+  dst: yrct-mirror/ubuntu
+  tags:
+     - name: latest
 - source: pacovk/tapir
   dst: yrct-mirror/tapir
   tags:
