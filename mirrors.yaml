@@ -244,7 +244,7 @@
   tags:
   - name: latest
 - source: spotify/techdocs
-  dist: yrct-mirror/techdocs
+  dst: yrct-mirror/techdocs
   tags:
   - name: v1.2.4
   - name: latest
