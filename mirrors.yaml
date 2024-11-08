@@ -248,3 +248,7 @@
   tags:
   - name: v1.2.4
   - name: latest
+- source: gcr.io/kaniko-project/executor
+  dst: yrct-mirror/kaniko-project-executor
+  tags:
+  - name: latest
