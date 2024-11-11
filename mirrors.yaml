@@ -239,6 +239,7 @@
   dst: yrct-mirror/ubuntu
   tags:
      - name: latest
+     - name: 22.04
 - source: pacovk/tapir
   dst: yrct-mirror/tapir
   tags:
