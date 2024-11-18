@@ -253,7 +253,7 @@
   dst: yrct-mirror/kaniko-project-executor
   tags:
   - name: latest
-- source: ghcr.io/fluxcd/flagger:1.32.0
+- source: ghcr.io/fluxcd/flagger
   dst:  yrct-mirror/flagger
   tags:
   - name: 1.32.0
