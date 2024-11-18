@@ -257,3 +257,12 @@
   dst:  yrct-mirror/flagger
   tags:
   - name: 1.32.0
+- source: ghcr.io/external-secrets/external-secrets
+  dst: yrct-mirror/external-secrets
+  tags:
+  - name: v0.9.1
+- source: rancher/rancher-agent
+  dst: yrct-mirror/rancher-agent
+  tags:
+  - name: v2.7.6
+- source: 
