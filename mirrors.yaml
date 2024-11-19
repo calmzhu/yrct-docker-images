@@ -269,4 +269,7 @@
   dst: yrct-mirror/reloader
   tags:
   - name: v0.0.103 
-
+- source: emby/embyserver
+  dst: yrct-mirror/embyserver
+  tags:
+  - name: latest
