@@ -278,7 +278,7 @@
   dst: yrct-mirror/rancher-webhook
   tags:
   - name: v0.3.5
-- source: rancher/gitjob:v0.1.76
+- source: rancher/gitjob
   dst: yrct-mirror/gitjob
   tags:
   - name: v0.1.76
@@ -310,7 +310,7 @@
   dst: yrct-mirror/postgres_exporter
   tags:
   - name: latest
-- source: registry-auth.twistlock.com/tw_zpak2zph3tlz2hskq09yzk0ajihdwqjq/twistlock/defender:defender_30_00_140
+- source: registry-auth.twistlock.com/tw_zpak2zph3tlz2hskq09yzk0ajihdwqjq/twistlock/defender
   dst: yrct-mirror/defender
   tags:
   - name: defender_30_00_140
