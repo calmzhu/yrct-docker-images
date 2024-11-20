@@ -265,11 +265,69 @@
   dst: yrct-mirror/rancher-agent
   tags:
   - name: v2.7.6
+- source: rancher/fleet-agent
+  dst: yrct-mirror/fleet-agent
+  tags:
+  - name: v0.8.0
+  - name: v0.3.5
+- source: rancher/fleet
+  dst: yrct-mirror/fleet
+  tags:
+  - name: v0.8.0
+- source: rancher/rancher-webhook
+  dst: yrct-mirror/rancher-webhook
+  tags:
+  - name: v0.3.5
+- source: rancher/gitjob:v0.1.76
+  dst: yrct-mirror/gitjob
+  tags:
+  - name: v0.1.76
 - source: stakater/reloader
   dst: yrct-mirror/reloader
   tags:
   - name: v0.0.103 
+- source: rancher/backup-restore-operator
+  dst: yrct-mirror/backup-restore-operator
+  tags:
+  - name: v3.1.3
 - source: emby/embyserver
   dst: yrct-mirror/embyserver
   tags:
   - name: latest
+- source: alpine/socat
+  dst: yrct-mirror/socat
+  tags:
+  - name: 1.7.4.4
+- source: tchiotludo/akhq
+  dst: yrct-mirror/akhq
+  tags:
+  - name: 0.17.0
+- source: oliver006/redis_exporter
+  dst: yrct-mirror/redis_exporter
+  tags:
+  - name: latest
+- source: wrouesnel/postgres_exporter
+  dst: yrct-mirror/postgres_exporter
+  tags:
+  - name: latest
+- source: registry-auth.twistlock.com/tw_zpak2zph3tlz2hskq09yzk0ajihdwqjq/twistlock/defender:defender_30_00_140
+  dst: yrct-mirror/defender
+  tags:
+  - name: defender_30_00_140
+- source: quay.io/reactiveops/rbac-manager
+  dst: yrct-mirror/rbac-manager
+  tags:
+  - name: v0.9.4
+- source: docker.elastic.co/beats/filebeat
+  dst: yrct-mirror/filebeat
+  tags:
+  - name: 8.0.0
+- source: bitnami/kubectl
+  dst: yrct-mirror/kubectl
+  tags: 
+  - name: latest
+- source: debezium/debezium-ui
+  dst: yrct-mirror/debezium-ui
+  tags:
+  - name: latest
+
