@@ -330,7 +330,7 @@
   dst: yrct-mirror/debezium-ui
   tags:
   - name: latest
-- source: terraform/terraform
+- source: hashicorp/terraform
   dst: yrct-mirror/terraform
   tags:
    - name: "1.8"
