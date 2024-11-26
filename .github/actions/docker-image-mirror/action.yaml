@@ -30,6 +30,12 @@ runs:
         registry: ${{ inputs.target-registry }}
         username: ${{ inputs.target-registry-user }}
         password: ${{ inputs.target-registry-password }}
+    - name: docker hub login
+      uses: regclient/actions/regctl-login@main
+      with:
+        registry: docker.io
+        username: ${{ inputs.docker-io-user }}
+        password: ${{ inputs.docker-io-token }}
     - shell: bash
       run: |
           for tag in `echo ${{ inputs.tags }}`
