@@ -73,8 +73,8 @@ jobs:
         name: mirror
         with:
           source-image: ${{ steps.set-mirror.outputs.source }}
-          docker-io-token: ${{ secrets.DOCKER_IO_TOKEN }}
-          docker-io-user: ${{ secrets.DOCKER_IO_USER }}
+          docker-io-token: ${{ secrets.DOCKER_HUB_AUTH }}
+          docker-io-user: ${{ secrets.DOCKER_HUB_USERNAME }}
           target-registry: ${{ vars.ALIYUN_ECR_URL }}
           target-registry-user: ${{ secrets.ALIYUN_ECR_USERNAME }}
           target-registry-password: ${{ secrets.ALIYUN_ECR_AUTH }}
