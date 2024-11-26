@@ -25,7 +25,7 @@ inputs:
     description: "username for docker.io login"
   docker-io-token:
     required: true
-    description: "password for docker.io login
+    description: "password for docker.io login"
 runs:
   using: 'composite'
   steps:
