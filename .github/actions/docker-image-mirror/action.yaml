@@ -20,7 +20,12 @@ inputs:
   tags:
     required: true
     description: "versions to mirror"
-
+  docker-io-user:
+    required: true
+    description: "username for docker.io login"
+  docker-io-token:
+    required: true
+    description: "password for docker.io login
 runs:
   using: 'composite'
   steps:
