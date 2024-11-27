@@ -335,3 +335,7 @@
   tags:
    - name: "1.8"
    - name: "1.4"
+- source: ghcr.io/actions/actions-runner
+  dst: yrct-mirror/actions-runner
+  tags:
+    - name: "latest"
