@@ -339,3 +339,7 @@
   dst: yrct-mirror/actions-runner
   tags:
     - name: "latest"
+- source: docker
+  dst: yrct-mirror/docker
+  tags:
+    - name: "dind"
