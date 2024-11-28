@@ -344,6 +344,6 @@
   tags:
     - name: "dind"
 - source: node
-   dst: yrct-mirror/node
-   tags:
+  dst: yrct-mirror/node
+  tags:
     - name: 20-bookworm-slim
