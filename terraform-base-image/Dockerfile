@@ -2,10 +2,9 @@ FROM yrct/br:latest AS builder
 
 
 FROM hashicorp/terraform:1.8
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories
 
 RUN apk add --no-cache libgcc libstdc++ openssl gpg tzdata jq bash curl github-cli
-RUN apk add yq --repository=http://mirrors.aliyun.com/alpine/edge/community --no-cache
+RUN apk add yq --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community --no-cache
 
 COPY --from=builder /usr/bin/rclone /usr/bin/rclone
 COPY --from=builder /usr/bin/pbzip2 /usr/bin/pbzip2
