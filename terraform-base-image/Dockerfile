@@ -1,7 +1,7 @@
 FROM yrct/br:latest AS builder
 
 
-FROM terraform/terraform:1.8
+FROM hashicorp/terraform:1.8
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories
 
 RUN apk add --no-cache libgcc libstdc++ openssl gpg tzdata jq bash curl github-cli
