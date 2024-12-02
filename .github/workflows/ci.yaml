@@ -1,4 +1,4 @@
-name: Build dockerfile
+name: OCI Build
 on:
   workflow_dispatch:
     inputs:
