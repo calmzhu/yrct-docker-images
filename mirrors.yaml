@@ -333,6 +333,7 @@
 - source: hashicorp/terraform
   dst: yrct-mirror/terraform
   tags:
+   - name: "1.9"
    - name: "1.8"
    - name: "1.4"
 - source: ghcr.io/actions/actions-runner
