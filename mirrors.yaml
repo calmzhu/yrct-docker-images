@@ -356,3 +356,7 @@
   dst: yrct-mirror/camunda-bpm-platform
   tags:
     - name: run-latest
+- source: argoproj/argosay
+  dst: yrct-mirror/argosay
+  tags:
+    - name: v2
