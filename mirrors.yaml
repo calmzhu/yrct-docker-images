@@ -361,3 +361,7 @@
   dst: yrct-mirror/argosay
   tags:
     - name: v2
+- source: yrct/terraform-base-image
+  dst: yrct-mirror/terraform-base-image
+  tags:
+    - name: v1.0.0
