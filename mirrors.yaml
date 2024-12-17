@@ -365,3 +365,11 @@
   dst: yrct-mirror/terraform-base-image
   tags:
     - name: v1.0.0
+- source: hashicorpdemoapp/product-api
+  dst: yrct-mirror/hashicorpdemoapp-product-api
+  tags:
+    - name: v0.0.22
+- source: hashicorpdemoapp/product-api-db
+  dst: yrct-mirror/hashicorpdemoapp-product-api-db
+  tags:
+    - name: v0.0.22
