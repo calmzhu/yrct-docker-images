@@ -378,3 +378,7 @@
   dst: yrct-mirror/gogs
   tags:
     - name: 0.13
+- source: bitnami/harbor-registry
+  dst: yrct-mirror/bitnami-habor-registry
+  tags:
+    - name: 2.12.1
