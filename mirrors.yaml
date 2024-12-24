@@ -374,3 +374,7 @@
   dst: yrct-mirror/hashicorpdemoapp-product-api-db
   tags:
     - name: v0.0.22
+- source: gogs/gogs
+  dst: yrct-mirror/gogs
+  tags:
+    - name: 0.13
