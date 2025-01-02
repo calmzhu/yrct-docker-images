@@ -382,3 +382,7 @@
   dst: yrct-mirror/bitnami-habor-registry
   tags:
     - name: 2.12.1
+- source: mariadb 
+  dst: yrct-mirror/mariadb
+  tags:
+    - name: lts-ubi
