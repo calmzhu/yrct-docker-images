@@ -267,6 +267,10 @@
   dst: yrct-mirror/rancher-agent
   tags:
   - name: v2.7.6
+- source: rancher/rancher
+  dst: yrct-mirror/rancher
+  tags:
+  - name: v2.9
 - source: rancher/fleet-agent
   dst: yrct-mirror/fleet-agent
   tags:
