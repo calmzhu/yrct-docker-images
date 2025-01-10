@@ -12,7 +12,7 @@ on:
         required: true
 concurrency:
   group: mirror-${{ inputs.dst }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   build-metrix:
     outputs:
