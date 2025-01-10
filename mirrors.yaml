@@ -270,7 +270,7 @@
 - source: rancher/rancher
   dst: yrct-mirror/rancher
   tags:
-  - name: v2.9
+  - name: v2.10-head
 - source: rancher/fleet-agent
   dst: yrct-mirror/fleet-agent
   tags:
