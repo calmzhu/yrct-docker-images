@@ -42,6 +42,7 @@
   dst: yrct-mirror/vault-warden-server
   tags:
     - name: "1.30.1"
+    - name: "1.32.7"
 - source: certbot/certbot
   dst: yrct-mirror/certbot
   tags:
