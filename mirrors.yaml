@@ -8,6 +8,7 @@
   dst: yrct-mirror/inbound-agent
   tags:
     - name: "3261.v9c670a_4748a_9-2"
+    - name: "3283.v92c105e0f819-4"
 - source: quay.io/argoproj/workflow-controller
   dst: yrct-mirror/argo-workflow-controller
   tags:
