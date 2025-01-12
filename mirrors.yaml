@@ -255,6 +255,7 @@
   dst: yrct-mirror/kaniko-project-executor
   tags:
   - name: latest
+  - name: v1.23.2
 - source: ghcr.io/fluxcd/flagger
   dst:  yrct-mirror/flagger
   tags:
