@@ -357,6 +357,7 @@
   dst: yrct-mirror/node
   tags:
     - name: 20-bookworm-slim
+    - name: 20-alpine
 - source: python
   dst: yrct-mirror/python
   tags:
