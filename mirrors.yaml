@@ -395,3 +395,7 @@
   dst: yrct-mirror/mariadb
   tags:
     - name: lts-ubi
+- source: metagpt/metagpt
+  dst: yrct-mirror/metagpt
+  tags:
+   - name: latest
