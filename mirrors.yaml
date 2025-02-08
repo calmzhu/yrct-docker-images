@@ -399,3 +399,7 @@
   dst: yrct-mirror/metagpt
   tags:
    - name: latest
+- source: openwrt/rootfs
+  dst: yrct-mirror/openwrt-rootfs
+  tags:
+   - name: latest
