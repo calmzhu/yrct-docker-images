@@ -411,3 +411,7 @@
   dst: yrct-mirror/mysql
   tags:
     - name: 5.7
+- source: dpanel/dpanel
+  dst: yrct-mirror/dpanel
+  tags:
+    - name: lite
