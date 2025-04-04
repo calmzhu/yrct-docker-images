@@ -415,3 +415,7 @@
   dst: yrct-mirror/dpanel
   tags:
     - name: lite
+- source: hslr/sun-panel
+  dst: yrct-mirror/sun-panel
+  tags:
+    - name: latest
