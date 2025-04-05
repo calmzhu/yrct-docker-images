@@ -47,6 +47,7 @@
   dst: yrct-mirror/certbot
   tags:
     - name: "v2.8.0"
+    - name: latest
 - source: yrct/easy-rsa
   dst: yrct-mirror/easy-rsa
   tags:
@@ -56,6 +57,7 @@
   dst: yrct-mirror/postgres
   tags:
     - name: alpine
+    - name: 15-alpine
     - name: "10"
     - name: "16"
     - name: latest
@@ -63,6 +65,7 @@
   dst: yrct-mirror/redis
   tags:
     - name: latest
+    - name: 6-alpine
     - name: alpine
 - source: yrct/debugger
   dst: yrct-mirror/debugger
@@ -423,3 +426,19 @@
   dst: yrct-mirror/dify-api
   tags:
     - name: 1.1.3
+- source: langgenius/dify-web
+  dst: yrct-mirror/dify-web
+  tags:
+    - name: 1.1.3
+- source: langgenius/dify-sandbox
+  dst: yrct-mirror/dify-sandbox
+  tags:
+    - name: 0.2.11
+- source: langgenius/dify-plugin-daemon
+  dst: yrct-mirror/dify-plugin-daemon
+  tags:
+    - name: 0.0.6-local
+- source: ubuntu/squid
+  dst: yrct-mirror/squid
+  tags:
+    - name: latest
