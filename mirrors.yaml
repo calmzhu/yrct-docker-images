@@ -419,3 +419,7 @@
   dst: yrct-mirror/sun-panel
   tags:
     - name: latest
+- source: langgenius/dify-api
+  dst: yrct-mirror/dify-api
+  tags:
+    - name: 1.1.3
