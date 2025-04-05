@@ -232,6 +232,7 @@
   dst: yrct-mirror/minio
   tags:
      - name: latest
+     - name: RELEASE.2023-03-20T20-16-18Z
 - source: mingrammer/flog
   dst: yrct-mirror/flog
   tags:
@@ -440,5 +441,69 @@
     - name: 0.0.6-local
 - source: ubuntu/squid
   dst: yrct-mirror/squid
+  tags:
+    - name: latest
+- source: semitechnologies/weaviate
+  dst: yrct-mirror/weaviate
+  tags:
+    - name: 1.19.0
+- source: langgenius/qdrant
+  dst: yrct-mirror/qdrant
+  tags:
+    - name: "v1.7.3"
+- source: pgvector/pgvector
+  dst: yrct-mirror/pgvector
+  tags:
+    - name: pg16
+- source: tensorchord/pgvecto-rs
+  dst: yrct-mirror/pgvecto-rs
+  tags:
+    - name: pg16-v0.3.0
+- source: ghcr.io/chroma-core/chroma
+  dst: yrct-mirrr/chroma
+  tags:
+    - name: 0.5.20
+- source: oceanbase/oceanbase-ce
+  dst: yrct-mirror/oceanbase-ce
+  tags:
+    - name: 4.3.5.1-101000042025031818
+- source: container-registry.oracle.com/database/free
+  dst: yrct-mirror/free
+  tags:
+    - name: latest
+- source: quay.io/coreos/etcd
+  dst: yrct-mirror/etcd
+  tags:
+    - name: v3.5.5
+- source: milvusdb/milvus
+  dst: yrct-mirror/milvus
+  tags:
+    - name: v2.5.0-beta
+- source: opensearchproject/opensearch
+  dst: yrct-mirror/opensearch
+  tags:
+    - name: latest
+- source: opensearchproject/opensearch-dashboards
+  dst: yrct-mirror/opensearch-dashboards
+  tags:
+    - name: latest
+- source: opengauss/opengauss
+  dst: yrct-mirror/opengauss
+  tags:
+    - name: 7.0.0-RC1
+- source: myscale/myscaledb
+  dst: yrct-mirror/myscaledb
+  tags:
+    - name: 1.6.4
+- source: docker.elastic.co/elasticsearch/elasticsearch
+  dst: yrct-mirror/elasticsearch
+  tags:
+    - name: 8.14.3
+- source: docker.elastic.co/kibana/kibana
+  dst: yrct-mirror/kibana
+  tags:
+    - name: 8.14.3
+- source: downloads.unstructured.io/unstructured-io/unstructured-api
+  dst: yrct-mirror/unstructured-api
   tags:
     - name: latest
