@@ -508,3 +508,7 @@
   dst: yrct-mirror/unstructured-api
   tags:
     - name: latest
+- source: mcr.microsoft.com/devcontainers/python
+  dst: yrct-mirror/devcontainers-python
+  tags:
+    - name: 3.12
