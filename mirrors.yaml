@@ -512,3 +512,7 @@
   dst: yrct-mirror/devcontainers-python
   tags:
     - name: 3.12
+- source: node:lts-alpine
+  dst: yrct-mirror/node
+  tags:
+    - name: lts-alpine
