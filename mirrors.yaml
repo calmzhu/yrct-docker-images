@@ -362,6 +362,7 @@
   tags:
     - name: 20-bookworm-slim
     - name: 20-alpine
+    - name: lts-alpine
 - source: python
   dst: yrct-mirror/python
   tags:
@@ -512,7 +513,3 @@
   dst: yrct-mirror/devcontainers-python
   tags:
     - name: 3.12
-- source: node:lts-alpine
-  dst: yrct-mirror/node
-  tags:
-    - name: lts-alpine
