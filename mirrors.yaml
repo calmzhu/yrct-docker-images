@@ -408,10 +408,13 @@
   dst: yrct-mirror/openwrt-rootfs
   tags:
    - name: latest
-- source: ghcr.io/astral-sh/uv:python3.13-alpine
+- source: ghcr.io/astral-sh/uv
   dst: yrct-mirror/uv
   tags:
     - name: python3.13-alpine
+    - name: python3.12-alpine
+    - name: python3.11-alpine
+    - name: python3.10-alpine
 - source: mysql
   dst: yrct-mirror/mysql
   tags:
