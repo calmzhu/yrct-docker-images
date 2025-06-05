@@ -411,6 +411,8 @@
 - source: ghcr.io/astral-sh/uv
   dst: yrct-mirror/uv
   tags:
+    - name: python3.12-bookworm-slim
+    - name: python3.13-bookworm-slim
     - name: python3.13-alpine
     - name: python3.12-alpine
     - name: python3.11-alpine
