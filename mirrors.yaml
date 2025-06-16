@@ -519,3 +519,35 @@
   dst: yrct-mirror/devcontainers-python
   tags:
     - name: 3.12
+- source: docker.io/rancher/klipper-helm
+  dst: yrct-mirror/klipper-helm
+  tags:
+    - name: v0.9.5-build20250306
+- source: docker.io/rancher/klipper-lb
+  dst: yrct-mirror/lipper-lb
+  tags:
+    - name: v0.4.13
+- source: docker.io/rancher/local-path-provisioner
+  dst: yrct-mirror/local-path-provisioner
+  tags:
+    - name: v0.0.31
+- source: docker.io/rancher/mirrored-coredns-coredns
+  dst: yrct-mirror/mirrored-coredns-coredns
+  tags:
+    - name: 1.12.1
+- source: docker.io/rancher/mirrored-library-busybox
+  dst: yrct-mirror/mirrored-library-busybox
+  tags:
+    - name: 1.36.1
+- source: docker.io/rancher/mirrored-library-traefik
+  dst: yrct-mirror/mirrored-library-traefik
+  tags:
+    - name: 3.3.6
+- source: docker.io/rancher/mirrored-metrics-server
+  dst: yrct-mirror/mirrored-metrics-server
+  tags:
+    - name: 0.7.2
+- source: docker.io/rancher/mirrored-pause
+  dst: yrct-mirror/mirrored-pause
+  tags:
+    - name: 3.6
