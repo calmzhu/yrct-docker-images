@@ -369,6 +369,7 @@
   tags:
     - name: 3.11-alpine
     - name: 3.12-alpine
+    - name: 3.13-alpine
 - source: camunda/camunda-bpm-platform
   dst: yrct-mirror/camunda-bpm-platform
   tags:
