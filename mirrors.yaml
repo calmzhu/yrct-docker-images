@@ -552,3 +552,11 @@
   dst: yrct-mirror/mirrored-pause
   tags:
     - name: 3.6
+- source: docker.swagger.io/swaggerapi/swagger-ui
+  dst: yrct-mirror/swagger-ui
+  tags:
+    - name: v5.26.0
+- source: docker.swagger.io/swaggerapi/swagger-editor
+  dst: yrct-mirror/swagger-editor
+  tags:
+    - name: next-v5
