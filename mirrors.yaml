@@ -556,6 +556,7 @@
   dst: yrct-mirror/swagger-ui
   tags:
     - name: v5.26.0
+    - name: v5.27.1
 - source: swaggerapi/swagger-editor
   dst: yrct-mirror/swagger-editor
   tags:
