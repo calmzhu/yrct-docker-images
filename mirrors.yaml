@@ -561,3 +561,15 @@
   dst: yrct-mirror/swagger-editor
   tags:
     - name: next-v5
+- source: activegate.decathlon.com.cn/linux/oneagent:1.319.76-raw
+  dst: yrct-mirror/oneagent
+  tags:
+     - name: 1.319.76-raw
+- source: stakater/reloader 
+  dst: yrct-mirror/stakater-reloader
+  tags:
+     - name: v0.0.103
+- source: quay.io/reactiveops/rbac-manager
+  dst: yrct-mirror/reactiveops-rbac-manager
+  tags:
+     - name: v1.1.2
