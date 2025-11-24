@@ -573,3 +573,7 @@
   dst: yrct-mirror/reactiveops-rbac-manager
   tags:
      - name: v1.1.2
+- source: metabase/metabase
+  dst: yrct-mirror/metabase
+  tags:
+     - name: latest
