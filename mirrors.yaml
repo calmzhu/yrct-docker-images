@@ -577,7 +577,7 @@
   dst: yrct-mirror/metabase
   tags:
      - name: latest
-- source: certimate/certimate:latest
+- source: certimate/certimate
   dst: yrct-mirror/certimate
   tags:
      - name: latest
