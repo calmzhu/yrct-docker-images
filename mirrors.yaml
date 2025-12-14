@@ -581,3 +581,11 @@
   dst: yrct-mirror/certimate
   tags:
      - name: latest
+- source: ghcr.io/nofxaios/nofx/nofx-backend
+  dst: yrct-mirror/nofx-backend
+  tags:
+     - name: latest
+- source: ghcr.io/nofxaios/nofx/nofx-frontend
+  dst: yrct-mirror/nofx-frontend
+  tags:
+     - name: latest
