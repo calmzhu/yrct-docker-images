@@ -592,7 +592,7 @@
   dst: yrct-mirror/nofx-frontend
   tags:
      - name: latest
-- source: prefecthq/prefect:3-latest
+- source: prefecthq/prefect
   dst: yrct-mirror/prefect
   tags:
      - name: 3-latest
