@@ -596,3 +596,4 @@
   dst: yrct-mirror/prefect
   tags:
      - name: 3-latest
+     - name: 3-python3.12
