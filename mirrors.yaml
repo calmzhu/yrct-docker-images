@@ -599,3 +599,7 @@
   tags:
      - name: 3-latest
      - name: 3-python3.12
+- source: ghcr.io/berriai/litellm:main-lates
+  dst: yrct-mirror/litellm
+  tags:
+     - name: main-latest
