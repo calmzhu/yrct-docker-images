@@ -232,6 +232,10 @@
   dst: yrct-mirror/grafana
   tags:
      - name: latest
+- source: grafana/tempo
+  dst: yrct-mirror/tempo
+  tags:
+     - name: latest
 - source: minio/minio
   dst: yrct-mirror/minio
   tags:
