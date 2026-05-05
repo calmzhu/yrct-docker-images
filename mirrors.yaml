@@ -223,6 +223,7 @@
   dst: yrct-mirror/loki
   tags:
      - name: 3.1.0
+     - name: latest
 - source: grafana/alloy
   dst: yrct-mirror/alloy
   tags:
@@ -612,3 +613,9 @@
   tags:
      - name: 3.6
      - name: 3.9
+- source: docker.io/rancher/mirrored-pause
+  dst: yrct-mirror/pause
+  tags:
+     - name: 3.6
+     - name: 3.9
+  
