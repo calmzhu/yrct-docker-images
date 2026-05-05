@@ -29,6 +29,12 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: regctl login docker.io
+      uses: regclient/actions/regctl-login@main
+      with:
+        registry: docker.io
+        username: ${{ inputs.docker-io-user }}
+        password: ${{ inputs.docker-io-token }}
     - name: regctl login
       uses: regclient/actions/regctl-login@main
       with:
