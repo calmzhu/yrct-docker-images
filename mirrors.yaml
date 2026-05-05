@@ -607,3 +607,8 @@
   dst: yrct-mirror/hermes-agent
   tags:
      - name: latest
+- source: docker.io/rancher/mirrored-pause
+  dst: yrct-mirror/pause
+  tags:
+     - name: 3.6
+     - name: 3.9
