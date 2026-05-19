@@ -534,6 +534,7 @@
   dst: yrct-mirror/klipper-helm
   tags:
     - name: v0.9.5-build20250306
+    - name: v0.9.7-build20250616
 - source: docker.io/rancher/klipper-lb
   dst: yrct-mirror/klipper-lb
   tags:
