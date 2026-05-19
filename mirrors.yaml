@@ -535,7 +535,7 @@
   tags:
     - name: v0.9.5-build20250306
 - source: docker.io/rancher/klipper-lb
-  dst: yrct-mirror/lipper-lb
+  dst: yrct-mirror/klipper-lb
   tags:
     - name: v0.4.13
 - source: docker.io/rancher/local-path-provisioner
