@@ -382,7 +382,7 @@
     - name: 3.12-slim
     - name: 3.13-slim
     - name: 3.14-slim
-    - name: 3.14-bookworm-slim
+    - name: 3.14-slim-bookworm
 
 
 - source: camunda/camunda-bpm-platform
