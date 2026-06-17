@@ -633,6 +633,7 @@
 - source: langfuse/langfuse
   dst: yrct-mirror/langfuse
   tags:
+     - name: "2"
      - name: "3"
      - name: latest
    
