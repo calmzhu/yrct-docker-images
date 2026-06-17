@@ -630,4 +630,9 @@
   tags:
      - name: 3.6
      - name: 3.9
-  
+- source: langfuse/langfuse
+  dst: yrct-mirror/langfuse
+  tags:
+     - name: "3"
+     - name: latest
+   
