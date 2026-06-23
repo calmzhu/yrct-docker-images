@@ -107,6 +107,7 @@
   dst: yrct-mirror/jellyfin
   tags:
     - name: latest
+    - name: "10.10"
 - source: yrct/ssl-easy
   dst: yrct-mirror/ssl-easy
   tags:
