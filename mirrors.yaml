@@ -640,3 +640,11 @@
   dst: yrct-mirror/clickhouse-server
   tags:
      - name: latest
+- source: ghcr.io/fedirz/faster-whisper-server
+  dst: yrct-mirror/whisper-server
+  tags:
+     - name: 0.6.0-rc.4-cpu
+- source: ghcr.io/remsky/kokoro-fastapi-cpu
+  dst: yrct-mirror/kokoro-fastapi
+  tags:
+     - name: latest
