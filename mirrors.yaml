@@ -636,6 +636,11 @@
   tags:
      - name: "3"
      - name: latest
+- source: langfuse/langfuse-worker
+  dst: yrct-mirror/langfuse-worker
+  tags:
+     - name: "3"
+     - name: latest
 - source: clickhouse/clickhouse-server
   dst: yrct-mirror/clickhouse-server
   tags:

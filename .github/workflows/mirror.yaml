@@ -8,75 +8,94 @@ on:
   workflow_dispatch:
     inputs:
       source:
-        description: "Source image defined in mirros.yaml"
-        required: true
+        description: "Source image defined in mirrors.yaml"
+        required: false
 concurrency:
-  group: mirror-${{ inputs.dst }}
+  group: mirror-${{ github.ref }}
   cancel-in-progress: false
 jobs:
-  build-metrix:
+  prepare:
     outputs:
-      images: ${{ steps.list_image.outputs.images }}
-    runs-on: [ ubuntu-latest ]
+      mirrors: ${{ steps.prep.outputs.mirrors }}
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: list_image
-        id: list_image
+      - name: install yq
+        uses: mikefarah/yq@v4
+      - name: generate mirror list
+        id: prep
         shell: bash
         run: |
-          set -x
-          if [[ -z "${{ inputs.source }}" ]]
-          then
-            last_version=`git log -2 --pretty=format:"%h" mirrors.yaml | tail -n 1`
-            for image in `yq '.[].source' mirrors.yaml`
-            do
-              current_mirror_info_digest=`yq ".[] | select(.source == \"$image\")" -o json -I 0 -M mirrors.yaml | sha256sum | awk '{print $1}'`
-              last_mirror_info_digest=`git show $last_version:mirrors.yaml | yq ".[] | select(.source == \"$image\")" -o json -I 0 -M  | sha256sum | awk '{print $1}'`
-              [[ "$last_mirror_info_digest" == "$current_mirror_info_digest" ]] || echo "- $image" >> change_image_manifest
-            done
-            if [[ -f change_image_manifest ]];then
-              # Sync latest edited image in mirrors.yaml
-              images=`yq -o json -I 0 -M change_image_manifest`
-            else
-              # Sync all image if no changed defined
-              images=`yq -e 'map(.source)' mirrors.yaml -o json -I 0 -M`
-            fi
+          set -e
+          if [[ -n "${{ inputs.source }}" ]]; then
+            mirrors=$(yq "[.[] | select(.source == \"${{ inputs.source }}\") | {\"source\": .source, \"dst\": .dst, \"tags\": [.tags[].name]}]" -o json -I 0 mirrors.yaml)
           else
-              images='["${{ inputs.source }}"]'
+            commit_count=$(git log --oneline mirrors.yaml | wc -l)
+            if [[ $commit_count -le 1 ]]; then
+              mirrors=$(yq '[.[] | {"source": .source, "dst": .dst, "tags": [.tags[].name]}]' -o json -I 0 mirrors.yaml)
+            else
+              last_commit=$(git log -2 --pretty=format:"%h" mirrors.yaml | tail -n 1)
+
+              # Export both versions as source-keyed JSON maps for position-independent diff
+              export_map() {
+                yq '[.[] | {"source": .source, "dst": .dst, "tags": ([.tags[].name] | sort)}]' -o json -I 0 "$1" \
+                  | jq 'map({key: .source, value: .}) | from_entries'
+              }
+              export_map mirrors.yaml > /tmp/current_map.json
+              git show "$last_commit":mirrors.yaml > /tmp/prev_mirrors.yaml
+              export_map /tmp/prev_mirrors.yaml > /tmp/last_map.json
+
+              # Find added or modified entries by comparing maps key-by-key
+              mirrors=$(jq -n -c \
+                --slurpfile cur /tmp/current_map.json \
+                --slurpfile last /tmp/last_map.json \
+                '$cur[0] | to_entries | map(select(.value != $last[0][.key])) | map(.value)')
+            fi
           fi
-          echo "images=$images" >> "$GITHUB_OUTPUT"
+          echo "mirrors=${mirrors}" >> "$GITHUB_OUTPUT"
+          echo "mirror_count=$(echo "${mirrors}" | jq -r 'length')"
 
   mirror:
-    runs-on: [ ubuntu-latest ]
-    needs:
-      - build-metrix
+    runs-on: ubuntu-latest
+    needs: prepare
+    if: needs.prepare.outputs.mirrors != '[]' && needs.prepare.outputs.mirrors != ''
     strategy:
-      max-parallel: 10
+      max-parallel: 20
       fail-fast: false
       matrix:
-        image: ${{ fromJson(needs.build-metrix.outputs.images) }}
-
+        mirror: ${{ fromJson(needs.prepare.outputs.mirrors) }}
+    env:
+      TARGET_BASE: ${{ vars.ALIYUN_ECR_URL }}
     steps:
-      - uses: actions/checkout@v4
-      - name: set-mirror-input
-        id: set-mirror
-        run: |
-          mirror_info=`yq '.[] | select(.source == "${{ matrix.image }}")' -o json -I 0 -M mirrors.yaml`
-          echo "source=`yq '.source' <<<$mirror_info`">>"$GITHUB_OUTPUT"
-          echo "target=`yq '.dst' <<<$mirror_info`">>"$GITHUB_OUTPUT"
-          echo "tags=`yq '.tags | map(.name)' -o tsv <<<$mirror_info`">>"$GITHUB_OUTPUT"
       - name: install regctl
         uses: regclient/actions/regctl-installer@main
-      - uses: './.github/actions/docker-image-mirror'
-        name: mirror
-        with:
-          source-image: ${{ steps.set-mirror.outputs.source }}
-          docker-io-token: ${{ secrets.DOCKER_HUB_AUTH }}
-          docker-io-user: ${{ secrets.DOCKER_HUB_USERNAME }}
-          target-registry: ${{ vars.ALIYUN_ECR_URL }}
-          target-registry-user: ${{ secrets.ALIYUN_ECR_USERNAME }}
-          target-registry-password: ${{ secrets.ALIYUN_ECR_AUTH }}
-          target-image-name: ${{ steps.set-mirror.outputs.target }}
-          tags: ${{ steps.set-mirror.outputs.tags }}
+      - name: install jq
+        run: |
+          if ! command -v jq &>/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y -qq jq
+          fi
+        shell: bash
+      - name: mirror image
+        shell: bash
+        run: |
+          # Write matrix item to file for safe jq parsing
+          cat <<'MATRIX_EOF' > /tmp/item.json
+          ${{ toJson(matrix.mirror) }}
+          MATRIX_EOF
+
+          source=$(jq -r '.source' /tmp/item.json)
+          dst=$(jq -r '.dst' /tmp/item.json)
+
+          # Login to both registries
+          regctl registry login docker.io \
+            -u "${{ secrets.DOCKER_HUB_USERNAME }}" \
+            -p "${{ secrets.DOCKER_HUB_AUTH }}"
+          regctl registry login "${TARGET_BASE}" \
+            -u "${{ secrets.ALIYUN_ECR_USERNAME }}" \
+            -p "${{ secrets.ALIYUN_ECR_AUTH }}"
+
+          # Copy all tags in parallel (max 4 concurrent copies for same image)
+          jq -r '.tags[]' /tmp/item.json | xargs -P 4 -I {} \
+            regctl image copy "${source}:{}" "${TARGET_BASE}/${dst}:{}"

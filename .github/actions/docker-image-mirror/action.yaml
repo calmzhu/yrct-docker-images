@@ -19,33 +19,33 @@ inputs:
     required: true
   tags:
     required: true
-    description: "versions to mirror"
+    description: "versions to mirror (space-separated)"
   docker-io-user:
-    required: true
+    required: false
     description: "username for docker.io login"
+    default: ""
   docker-io-token:
-    required: true
+    required: false
     description: "password for docker.io login"
+    default: ""
 runs:
   using: 'composite'
   steps:
-    - name: regctl login docker.io
-      uses: regclient/actions/regctl-login@main
-      with:
-        registry: docker.io
-        username: ${{ inputs.docker-io-user }}
-        password: ${{ inputs.docker-io-token }}
-    - name: regctl login
-      uses: regclient/actions/regctl-login@main
-      with:
-        registry: ${{ inputs.target-registry }}
-        username: ${{ inputs.target-registry-user }}
-        password: ${{ inputs.target-registry-password }}
-    - shell: bash
+    - name: mirror images
+      shell: bash
       run: |
-          for tag in `echo ${{ inputs.tags }}`
-          do
-              src=${{ inputs.source-image }}:$tag
-              dst=${{ inputs.target-registry }}/${{ inputs.target-image-name }}:$tag
-              regctl image copy $src $dst
-          done
+        # Login to docker.io if credentials provided
+        if [[ -n "${{ inputs.docker-io-user }}" ]]; then
+          regctl registry login docker.io \
+            -u "${{ inputs.docker-io-user }}" \
+            -p "${{ inputs.docker-io-token }}"
+        fi
+        regctl registry login "${{ inputs.target-registry }}" \
+          -u "${{ inputs.target-registry-user }}" \
+          -p "${{ inputs.target-registry-password }}"
+
+        tags_list=$(echo "${{ inputs.tags }}" | tr ',' ' ')
+        echo "${tags_list}" | xargs -P 4 -I {} \
+          regctl image copy \
+            "${{ inputs.source-image }}:{}" \
+            "${{ inputs.target-registry }}/${{ inputs.target-image-name }}:{}"
