@@ -653,3 +653,18 @@
   dst: yrct-mirror/kokoro-fastapi
   tags:
      - name: latest
+- source: makeplane/plane-backend
+  dst: yrct-mirror/plane-backend
+  tags:
+    - name: stable
+    - name: latest
+- source: makeplane/plane-frontend
+  dst: yrct-mirror/plane-frontend
+  tags:
+    - name: stable
+    - name: latest
+- source: makeplane/plane-proxy
+  dst: yrct-mirror/plane-proxy
+  tags:
+    - name: stable
+    - name: latest
