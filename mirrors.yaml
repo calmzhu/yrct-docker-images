@@ -668,3 +668,8 @@
   tags:
     - name: stable
     - name: latest
+- source: rabbitmq
+  dst: yrct-mirror/rabbitmq
+  tags:
+    - name: 3.13.6-management-alpine
+    - name: management-alpine
