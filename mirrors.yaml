@@ -64,7 +64,8 @@
     - name: 15-alpine
     - name: "10"
     - name: "16"
-    - name: "18"
+    - name: "18-alpine"
+    - name: 18
     - name: latest
 - source: redis
   dst: yrct-mirror/redis
